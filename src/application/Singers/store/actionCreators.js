@@ -4,8 +4,7 @@ import {
 } from "../../../api/request";
 import {
     CHANGE_SINGER_LIST,
-    CHANGE_CATOGORY,
-    CHANGE_ALPHA,
+
     CHANGE_PAGE_COUNT,
     CHANGE_PULLUP_LOADING,
     CHANGE_PULLDOWN_LOADING,
@@ -14,6 +13,7 @@ import {
 import {
     fromJS
 } from 'immutable';
+
 
 
 const changeSingerList = (data) => ({
@@ -77,12 +77,15 @@ export const refreshMoreHotSingerList = () => {
 
 //第一次加载对应类别的歌手
 export const getSingerList = (category, alpha) => {
+ 
+
     return (dispatch, getState) => {
         getSingerListRequest(category, alpha, 0).then(res => {
             const data = res.artists;
             dispatch(changeSingerList(data));
             dispatch(changeEnterLoading(false));
             dispatch(changePullDownLoading(false));
+            console.log(category);
         }).catch(() => {
             console.log('歌手数据获取失败');
         });
@@ -91,6 +94,7 @@ export const getSingerList = (category, alpha) => {
 
 //加载更多歌手
 export const refreshMoreSingerList = (category, alpha) => {
+
     return (dispatch, getState) => {
         const pageCount = getState().getIn(['singers', 'pageCount']);
         const singerList = getState().getIn(['singers', 'singerList']).toJS();
