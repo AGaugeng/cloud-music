@@ -1,4 +1,5 @@
 import { axiosInstance } from "./config";
+import {replaceCat} from './replaceCat'
 
 export const getBannerRequest = () => {
   return axiosInstance.get ('/banner');
@@ -13,5 +14,10 @@ export const getHotSingerListRequest = (count) => {
 }
 
 export const getSingerListRequest= (category, alpha, count) => {
-  return axiosInstance.get(`/artist/list?type=${category}&initial=${alpha.toLowerCase()}&offset=${count}`);
+  let {type,area}=replaceCat(category);
+  return axiosInstance.get(`/artist/list?type=${type}&area=${area}&initial=${alpha.toLowerCase()}&offset=${count}`);
 }
+
+export const getRankListRequest = () => {
+  return axiosInstance.get (`/toplist/detail`);
+};

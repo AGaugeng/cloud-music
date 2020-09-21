@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from'styled-components';
+import styled, { keyframes } from 'styled-components';
 import style from '../../assets/global-style';
 
 const loading = keyframes`
@@ -23,7 +23,7 @@ const LoadingWrapper = styled.div`
     height: 60px;
     opacity: 0.6;
     border-radius: 50%;
-    background-color: ${style ["theme-color"]};
+    background-color: ${style["theme-color"]};
     animation: ${loading} 1.4s infinite ease-in;
   }
   >div:nth-child (2) {
@@ -31,7 +31,7 @@ const LoadingWrapper = styled.div`
   }
 `
 
-function Loading ()  {
+function Loading() {
   return (
     <LoadingWrapper>
       <div></div>
@@ -39,5 +39,5 @@ function Loading ()  {
     </LoadingWrapper>
   );
 }
- 
-export default React.memo (Loading);
+
+export default React.memo(Loading);

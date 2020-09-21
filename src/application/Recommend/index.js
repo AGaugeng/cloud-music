@@ -12,19 +12,19 @@ import Loading from '../../baseUI/loading/index';
 function Recommend(props) {
 
   //mock 数据
-  const { bannerList, recommendList,enterLoading } = props;
+  const { bannerList, recommendList, enterLoading } = props;
 
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
 
 
-  useEffect (() => {
+  useEffect(() => {
     // 如果页面有数据，则不发请求
     //immutable 数据结构中长度属性 size
-    if (!bannerList.size){
-      getBannerDataDispatch ();
+    if (!bannerList.size) {
+      getBannerDataDispatch();
     }
-    if (!recommendList.size){
-      getRecommendListDataDispatch ();
+    if (!recommendList.size) {
+      getRecommendListDataDispatch();
     }
   }, []);
   const bannerListJS = bannerList ? bannerList.toJS() : [];
